@@ -1,8 +1,0 @@
-spring:
-  cloud:
-    config:
-      name: batch-service
-      discovery:
-        service-id: config
-        enabled: true
-      fail-fast: true
