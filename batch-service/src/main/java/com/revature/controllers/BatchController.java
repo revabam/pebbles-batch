@@ -64,7 +64,7 @@ public class BatchController {
 		}
 	}
 	
-	@GetMapping(value="/{trainerId}", produces=MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value="/trainer/{trainerId}", produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Batch> findBatchByTrainerId(@PathVariable Integer trainerId) {
 		
 		System.out.println("[DEBUG] - In BatchController.findBatchByTrainerId");

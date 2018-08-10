@@ -50,11 +50,24 @@ public class Batch implements Serializable{
 	
 	public Batch() {
 		super();
-	}
+	}	
+	
 
-	public Batch(Integer id, String name, Date startDate, Date endDate, int trainer_id, int calendarCurriculum_id) {
+	public Batch(Integer id, @NotNull String name, @NotNull Date startDate, @NotNull Date endDate,
+			@NotNull int trainer_id, @NotNull int calendarCurriculum_id) {
 		super();
 		this.id = id;
+		this.name = name;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.trainer_id = trainer_id;
+		this.calendarCurriculum_id = calendarCurriculum_id;
+	}
+
+
+	public Batch(@NotNull String name, @NotNull Date startDate, @NotNull Date endDate, @NotNull int trainer_id,
+			@NotNull int calendarCurriculum_id) {
+		super();
 		this.name = name;
 		this.startDate = startDate;
 		this.endDate = endDate;
