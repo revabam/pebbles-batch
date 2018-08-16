@@ -16,15 +16,15 @@ import org.springframework.stereotype.Component;
 
 @Entity
 @Component
-@Table(name="Batch")
-@SequenceGenerator(name="batch_seq", sequenceName="batch_seq", allocationSize=1)
+@Table(name="BATCH")
+@SequenceGenerator(name="batch_seq_name", sequenceName="batch_seq", initialValue=5, allocationSize=1)
 public class Batch implements Serializable{
 	
 	
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="batch_seq")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="batch_seq_name")
 	@Column(name="id")
 	private Integer id;
 	

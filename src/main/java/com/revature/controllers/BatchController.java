@@ -51,16 +51,16 @@ public class BatchController {
 		
 	}
 	
-	@GetMapping(value="/{name}", produces=MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Batch> findBatchByName(@PathVariable String name) {
+	@GetMapping(value="/name/{name}", produces=MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<Batch>> findBatchByName(@PathVariable String name) {
 		
 		System.out.println("[DEBUG] - In BatchController.findBatchByName");
-		Batch batch = batchService.findBatchByName(name);
+		List<Batch> batch = batchService.findBatchByName(name);
 		
 		if(batch == null) {
-			return new ResponseEntity<Batch>(batch, HttpStatus.NOT_FOUND);
+			return new ResponseEntity<List<Batch>>(batch, HttpStatus.NOT_FOUND);
 		} else {
-			return new ResponseEntity<Batch>(batch, HttpStatus.OK);
+			return new ResponseEntity<List<Batch>>(batch, HttpStatus.OK);
 		}
 	}
 	
