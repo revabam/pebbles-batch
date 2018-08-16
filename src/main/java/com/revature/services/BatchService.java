@@ -27,7 +27,7 @@ public class BatchService {
 		return batchRepository.findBatchById(id);
 	}
 	
-	public Batch findBatchByName(String name) {
+	public List<Batch> findBatchByName(String name) {
 		System.out.println();
 		return batchRepository.findBatchByName(name);
 	}
