@@ -14,6 +14,9 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+
 @Entity
 @Component
 @Table(name="BATCH")
@@ -32,10 +35,12 @@ public class Batch implements Serializable{
 	@Column(name="name", unique=true)
 	private String name;
 	
+	@JsonIgnoreProperties
 	@NotNull
 	@Column(name="start_date")
 	private Date startDate;
-	
+		
+	@JsonIgnoreProperties
 	@NotNull
 	@Column(name="end_date")
 	private Date endDate;
