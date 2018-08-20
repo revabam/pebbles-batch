@@ -12,12 +12,14 @@ import com.revature.models.Batch;
 @Repository 
 public interface BatchRepository extends JpaRepository<Batch, Integer>{
 	
+	// Also using CRUD repository findAll() and  save() methods
+	
 	 Batch findBatchById(Integer id);
 	 
-	 List<Batch> findBatchByName(String name);
+	 List<Batch> findBatchesByName(String name);
 	 
 	 @Query("from Batch b WHERE b.trainer_id = :trainer_id")
-	 Batch findBatchByTrainerId(@Param("trainer_id") Integer trainerId);
+	 List<Batch> findBatchesByTrainerId(@Param("trainer_id") Integer trainerId);
 	 
 	 
 	 }

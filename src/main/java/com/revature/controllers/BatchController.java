@@ -2,6 +2,8 @@ package com.revature.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -23,12 +25,19 @@ import com.revature.services.BatchService;
 
 @CrossOrigin 
 @RestController
-@RequestMapping(value="/batches")
+@RequestMapping
 public class BatchController {
 	
 	@Autowired 
 	BatchService batchService;
 	
+	/**
+	*<This method will retrieve all batches>
+	*@param no parameters are taken in
+	*@return ResponseEntity<List<Batch>> <Returns a list of all batches>
+	*		 and an http status code of OK or NOT_FOUND>
+	*@author <John Beineke><1806-jun18-java-usf><Wezley Singleton>
+	*/
 	@GetMapping(produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Batch>> findAll(){
 		
@@ -37,6 +46,14 @@ public class BatchController {
 		return new ResponseEntity<List<Batch>>(allBatches, HttpStatus.OK);
 	}
 	
+	
+	/**
+	*<This method will retrieve a batch by its id>
+	*@param takes in a numeric parameter that represents a batches' id
+	*@return ResponseEntity<Batch> <Returns the batch with the corresponding name
+	*		 and an http status code of OK or NOT_FOUND>
+	*@author <John Beineke><1806-jun18-java-usf><Wezley Singleton>
+	*/
 	@GetMapping(value="/{id}", produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Batch> findBatchById(@PathVariable Integer id) {
 		
@@ -51,48 +68,76 @@ public class BatchController {
 		
 	}
 	
+	/**
+	*<This method will retrieve a batch by its name>
+	*@param takes in a string parameter that represents a batches' name
+	*@return ResponseEntity<Batch> <Returns the batch with the corresponding id
+	*		and an http status code of OK or NOT_FOUND>
+	*@author <John Beineke><1806-jun18-java-usf><Wezley Singleton>
+	*/
 	@GetMapping(value="/name/{name}", produces=MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<Batch>> findBatchByName(@PathVariable String name) {
+	public ResponseEntity<List<Batch>> findBatchesByName(@PathVariable String name) {
 		
 		System.out.println("[DEBUG] - In BatchController.findBatchByName");
-		List<Batch> batch = batchService.findBatchByName(name);
+		List<Batch> batches = batchService.findBatchByName(name);
 		
-		if(batch == null) {
-			return new ResponseEntity<List<Batch>>(batch, HttpStatus.NOT_FOUND);
+		if(batches == null) {
+			return new ResponseEntity<List<Batch>>(batches, HttpStatus.NOT_FOUND);
 		} else {
-			return new ResponseEntity<List<Batch>>(batch, HttpStatus.OK);
+			return new ResponseEntity<List<Batch>>(batches, HttpStatus.OK);
 		}
 	}
 	
+	/**
+	*<This method will retrieve all batches with the specified trainer's user id>
+	*@param takes in a numeric parameter that represents a trainer's user id
+	*@return ResponseEntity<List<Batch>> <Returns the batches with the corresponding trainer's id
+	*		 and an http status code of OK or NOT_FOUND>
+	*@author <John Beineke><1806-jun18-java-usf><Wezley Singleton>
+	*/
 	@GetMapping(value="/trainer/{trainerId}", produces=MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Batch> findBatchByTrainerId(@PathVariable Integer trainerId) {
+	public ResponseEntity<List<Batch>> findBatchesByTrainerId(@PathVariable Integer trainerId) {
 		
 		System.out.println("[DEBUG] - In BatchController.findBatchByTrainerId");
-		Batch batch = batchService.findBatchByTrainerId(trainerId);
+		List<Batch> batches = batchService.findBatchesByTrainerId(trainerId);
 		
-		if (batch == null) {
-			return new ResponseEntity<Batch>(batch, HttpStatus.NOT_FOUND);
+		if (batches == null) {
+			return new ResponseEntity<List<Batch>>(batches, HttpStatus.NOT_FOUND);
 		}else {
-			return new ResponseEntity<Batch>(batch, HttpStatus.OK);
+			return new ResponseEntity<List<Batch>>(batches, HttpStatus.OK);
 		}
 	}
 	
+	/**
+	*<This method will add a batch>
+	*@param takes in a batch object and checks for valid field values
+	*@return ResponseEntity<Batch> <Returns the batch that was just created 
+	*		 and an http status code of CREATED>
+	*@author <John Beineke><1806-jun18-java-usf><Wezley Singleton>
+	*/
 	@PostMapping(produces=MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Batch> addBatch(@RequestBody Batch batch){
+	public ResponseEntity<Batch> addBatch(@Valid @RequestBody Batch batch){
 		
 		System.out.println("[DEBUG] - In BatchController.addBatch");
 		Batch newBatch = batchService.addBatch(batch);
 		return new ResponseEntity<Batch>(newBatch, HttpStatus.CREATED);
 	}
 	
+	/**
+	*<This method will update an existing batch>
+	*@param takes in a batch object and checks for valid field values
+	*@return ResponseEntity<Batch> <Returns the updated batch unless that batch was not found, then
+	*		 it will return the attempted batch, and an http status code of OK or NOT_FOUND>
+	*@author <John Beineke><1806-jun18-java-usf><Wezley Singleton>
+	*/
 	@PutMapping(produces=MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Batch> updateBatch(@RequestBody Batch batch){
+	public ResponseEntity<Batch> updateBatch(@Valid @RequestBody Batch batch){
 		
 		System.out.println("[DEBUG] - In BatchController.updateBatch");
 		Batch updatedBatch = batchService.updateBatch(batch);
 		
 		if(updatedBatch == null) {
-			return new ResponseEntity<Batch>(updatedBatch, HttpStatus.NOT_FOUND);
+			return new ResponseEntity<Batch>(batch, HttpStatus.NOT_FOUND);
 		}else {
 		return new ResponseEntity<Batch>(updatedBatch, HttpStatus.OK);
 		}
