@@ -6,16 +6,22 @@ import static org.junit.Assert.assertEquals;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Ignore;
 import org.junit.Test;
 
 import com.google.gson.JsonObject;
 import com.revature.models.Batch;
+import com.revature.services.BatchService;
 
 import io.restassured.RestAssured;
 
 public class BatchTests {
 
+	private static final Logger logger = LogManager.getLogger(BatchTests.class);
+
+	
 	// Set the url where we can find the exposed endpoints
 		static String url = "http://localhost:8765/bam/batches";
 		
@@ -80,7 +86,7 @@ public class BatchTests {
 	    @Test
 	    public void canAddBatch() {
 	    	
-	    	System.out.println("In RestAssuredBatchServiceTests.java");
+	    	logger.info("In RestAssuredBatchServiceTests.java");
 	    	
 	    	Batch newBatch = new Batch(10, "1806-June12-USF-Pega", new Date(1637224472690l), new Date(1937224472690l), 2, 2);
 			
@@ -91,7 +97,7 @@ public class BatchTests {
 	    
 	    @Test
 	    public void canAddBatchAndCompareBody() {
-	    	System.out.println("In RestAssuredBatchServiceTests.java");
+	    	logger.info("In RestAssuredBatchServiceTests.java");
 	    	
 	    	Batch newBatch = new Batch(6, "1806-June12-USF-Pega", new Date(1637224472690l), new Date(1937224472690l), 2, 2);
 			

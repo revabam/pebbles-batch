@@ -51,10 +51,8 @@ public class BatchController {
 		
 		logger.info("[DEBUG] - In BatchController.findAll()");
 		
-		
-		
 		List<Batch> allBatches = batchService.findAll();
-		return new ResponseEntity<List<Batch>>(allBatches, HttpStatus.OK);
+		return new ResponseEntity<>(allBatches, HttpStatus.OK);
 	}
 	
 	
@@ -72,9 +70,9 @@ public class BatchController {
 		Batch batch = batchService.findBatchById(id);
 		
 		if(batch == null) {
-			return new ResponseEntity<Batch>(batch, HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(batch, HttpStatus.NOT_FOUND);
 		}else {
-			return new ResponseEntity<Batch>(batch, HttpStatus.OK);
+			return new ResponseEntity<>(batch, HttpStatus.OK);
 		}
 		
 	}
@@ -94,9 +92,9 @@ public class BatchController {
 		List<Batch> batches = batchService.findBatchByName(name);
 		
 		if(batches == null) {
-			return new ResponseEntity<List<Batch>>(batches, HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(batches, HttpStatus.NOT_FOUND);
 		} else {
-			return new ResponseEntity<List<Batch>>(batches, HttpStatus.OK);
+			return new ResponseEntity<>(batches, HttpStatus.OK);
 		}
 	}
 	
@@ -114,9 +112,9 @@ public class BatchController {
 		List<Batch> batches = batchService.findBatchesByTrainerId(trainerId);
 		
 		if (batches == null) {
-			return new ResponseEntity<List<Batch>>(batches, HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(batches, HttpStatus.NOT_FOUND);
 		}else {
-			return new ResponseEntity<List<Batch>>(batches, HttpStatus.OK);
+			return new ResponseEntity<>(batches, HttpStatus.OK);
 		}
 	}
 	
@@ -132,7 +130,7 @@ public class BatchController {
 		
 		logger.info("[DEBUG] - In BatchController.addBatch");
 		Batch newBatch = batchService.addBatch(batch);
-		return new ResponseEntity<Batch>(newBatch, HttpStatus.CREATED);
+		return new ResponseEntity<>(newBatch, HttpStatus.CREATED);
 	}
 	
 	/**
@@ -149,21 +147,21 @@ public class BatchController {
 		Batch updatedBatch = batchService.updateBatch(batch);
 		
 		if(updatedBatch == null) {
-			return new ResponseEntity<Batch>(batch, HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(batch, HttpStatus.NOT_FOUND);
 		}else {
-		return new ResponseEntity<Batch>(updatedBatch, HttpStatus.OK);
+		return new ResponseEntity<>(updatedBatch, HttpStatus.OK);
 		}
 	}
 	
 	@ExceptionHandler
-	public ResponseEntity<BatchErrorResponse> HandleException(BatchNotFoundException e){
+	public ResponseEntity<BatchErrorResponse> handleException(BatchNotFoundException e){
 		
 		BatchErrorResponse error = new BatchErrorResponse();
 		error.setStatus(HttpStatus.NOT_FOUND.value());
 		error.setMessage(e.getMessage());
 		error.setTimestamp(System.currentTimeMillis());
 		
-		return new ResponseEntity<BatchErrorResponse>(error, HttpStatus.NOT_FOUND);
+		return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
 	}
 	
 	
