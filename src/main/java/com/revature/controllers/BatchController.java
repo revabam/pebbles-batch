@@ -23,13 +23,21 @@ import com.revature.models.Batch;
 import com.revature.models.BatchErrorResponse;
 import com.revature.services.BatchService;
 
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 @CrossOrigin 
 @RestController
 @RequestMapping
 public class BatchController {
 	
+	
+	
 	@Autowired 
 	BatchService batchService;
+	
+	private static final Logger logger = LogManager.getLogger(BatchController.class);
 	
 	/**
 	*<This method will retrieve all batches>
@@ -41,7 +49,10 @@ public class BatchController {
 	@GetMapping(produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Batch>> findAll(){
 		
-		System.out.println("[DEBUG] - In BatchController.findAll()");
+		logger.info("[DEBUG] - In BatchController.findAll()");
+		
+		
+		
 		List<Batch> allBatches = batchService.findAll();
 		return new ResponseEntity<List<Batch>>(allBatches, HttpStatus.OK);
 	}
@@ -57,7 +68,7 @@ public class BatchController {
 	@GetMapping(value="/{id}", produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Batch> findBatchById(@PathVariable Integer id) {
 		
-		System.out.println("[DEBUG] - In BatchController.findBatchById");
+		logger.info("[DEBUG] - In BatchController.findBatchById");
 		Batch batch = batchService.findBatchById(id);
 		
 		if(batch == null) {
@@ -77,8 +88,9 @@ public class BatchController {
 	*/
 	@GetMapping(value="/name/{name}", produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Batch>> findBatchesByName(@PathVariable String name) {
+
+		logger.info("[DEBUG] - In BatchController.findBatchByName");
 		
-		System.out.println("[DEBUG] - In BatchController.findBatchByName");
 		List<Batch> batches = batchService.findBatchByName(name);
 		
 		if(batches == null) {
@@ -98,7 +110,7 @@ public class BatchController {
 	@GetMapping(value="/trainer/{trainerId}", produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Batch>> findBatchesByTrainerId(@PathVariable Integer trainerId) {
 		
-		System.out.println("[DEBUG] - In BatchController.findBatchByTrainerId");
+		logger.info("[DEBUG] - In BatchController.findBatchByTrainerId");
 		List<Batch> batches = batchService.findBatchesByTrainerId(trainerId);
 		
 		if (batches == null) {
@@ -118,7 +130,7 @@ public class BatchController {
 	@PostMapping(produces=MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Batch> addBatch(@Valid @RequestBody Batch batch){
 		
-		System.out.println("[DEBUG] - In BatchController.addBatch");
+		logger.info("[DEBUG] - In BatchController.addBatch");
 		Batch newBatch = batchService.addBatch(batch);
 		return new ResponseEntity<Batch>(newBatch, HttpStatus.CREATED);
 	}
@@ -133,7 +145,7 @@ public class BatchController {
 	@PutMapping(produces=MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Batch> updateBatch(@Valid @RequestBody Batch batch){
 		
-		System.out.println("[DEBUG] - In BatchController.updateBatch");
+		logger.info("[DEBUG] - In BatchController.updateBatch");
 		Batch updatedBatch = batchService.updateBatch(batch);
 		
 		if(updatedBatch == null) {
