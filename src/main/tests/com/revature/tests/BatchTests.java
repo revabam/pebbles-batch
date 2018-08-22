@@ -17,7 +17,7 @@ import io.restassured.RestAssured;
 public class BatchTests {
 
 	// Set the url where we can find the exposed endpoints
-		static String url = "http://localhost:8765/bam/batches";
+		static String url = "http://localhost:9997";
 		
 		// This test retrieves all batches
 	    @Test

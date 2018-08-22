@@ -23,6 +23,14 @@ import com.revature.models.Batch;
 import com.revature.models.BatchErrorResponse;
 import com.revature.services.BatchService;
 
+/**
+ * This is the controller containing the endpoints to hit for batch CRUD functionality.
+ * There is no functionality to delete records from the database.
+ * The methods in this class are ran when the mapping endpoints are hit. They call a batch service class which calls methods 
+ * to implement the CRUD functionality and finally return a ResponseEntity to the client
+ * @author author John Beineke batch: 1806-jun18-usf-java trainer: Wezley Singleton
+ */
+
 @CrossOrigin 
 @RestController
 @RequestMapping
@@ -32,11 +40,10 @@ public class BatchController {
 	BatchService batchService;
 	
 	/**
-	*<This method will retrieve all batches>
-	*@param no parameters are taken in
-	*@return ResponseEntity<List<Batch>> <Returns a list of all batches>
-	*		 and an http status code of OK or NOT_FOUND>
-	*@author <John Beineke><1806-jun18-java-usf><Wezley Singleton>
+	*This method Returns all Batches in the database
+	*@param no parameters are taken 
+	*@return Returns a list of all Batches in the database and an http status code
+	*@author John Beineke, Batch: 1806-jun18-java-usf, Trainer: Wezley Singleton
 	*/
 	@GetMapping(produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Batch>> findAll(){
@@ -48,11 +55,11 @@ public class BatchController {
 	
 	
 	/**
-	*<This method will retrieve a batch by its id>
-	*@param takes in a numeric parameter that represents a batches' id
-	*@return ResponseEntity<Batch> <Returns the batch with the corresponding name
-	*		 and an http status code of OK or NOT_FOUND>
-	*@author <John Beineke><1806-jun18-java-usf><Wezley Singleton>
+	*	This method Returns the Batch that corresponds with the id parameter
+	*@param  an int id parameter is taken in 
+	*@return Returns a response entity containing a Batch that corresponds with the id parameter
+	*		 and an http status code
+	*@author John Beineke, Batch: 1806-jun18-java-usf, Trainer: Wezley Singleton
 	*/
 	@GetMapping(value="/{id}", produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Batch> findBatchById(@PathVariable Integer id) {
@@ -69,11 +76,11 @@ public class BatchController {
 	}
 	
 	/**
-	*<This method will retrieve a batch by its name>
-	*@param takes in a string parameter that represents a batches' name
-	*@return ResponseEntity<Batch> <Returns the batch with the corresponding id
-	*		and an http status code of OK or NOT_FOUND>
-	*@author <John Beineke><1806-jun18-java-usf><Wezley Singleton>
+	*	This method Returns the Batch that corresponds with the name parameter
+	*@param  a String name parameter is taken in 
+	*@return Returns a response entity containing a Batch that corresponds with the name parameter
+	*		 and an http status code
+	*@author John Beineke, Batch: 1806-jun18-java-usf, Trainer: Wezley Singleton
 	*/
 	@GetMapping(value="/name/{name}", produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Batch>> findBatchesByName(@PathVariable String name) {
@@ -89,11 +96,11 @@ public class BatchController {
 	}
 	
 	/**
-	*<This method will retrieve all batches with the specified trainer's user id>
-	*@param takes in a numeric parameter that represents a trainer's user id
-	*@return ResponseEntity<List<Batch>> <Returns the batches with the corresponding trainer's id
-	*		 and an http status code of OK or NOT_FOUND>
-	*@author <John Beineke><1806-jun18-java-usf><Wezley Singleton>
+	*	This method Returns a list of batches that correspond with the Trainer id parameter
+	*@param  an int id parameter is taken in that represents a trainer's id
+	*@return Returns a response entity containing a list of the batches that correspond with the Trainer id parameter
+	*		 and an http status code
+	*@author John Beineke, Batch: 1806-jun18-java-usf, Trainer: Wezley Singleton
 	*/
 	@GetMapping(value="/trainer/{trainerId}", produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Batch>> findBatchesByTrainerId(@PathVariable Integer trainerId) {
@@ -109,11 +116,11 @@ public class BatchController {
 	}
 	
 	/**
-	*<This method will add a batch>
-	*@param takes in a batch object and checks for valid field values
-	*@return ResponseEntity<Batch> <Returns the batch that was just created 
-	*		 and an http status code of CREATED>
-	*@author <John Beineke><1806-jun18-java-usf><Wezley Singleton>
+	*	This method Takes a Batch object from a request body, and persists it to a database.
+	*@param  a Batch is taken in as the request body
+	*@return The Batch that was added to the database with its generated id, and a corresponding
+	*		 http status code
+	*@author John Beineke, Batch: 1806-jun18-java-usf, Trainer: Wezley Singleton
 	*/
 	@PostMapping(produces=MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Batch> addBatch(@Valid @RequestBody Batch batch){
@@ -124,11 +131,10 @@ public class BatchController {
 	}
 	
 	/**
-	*<This method will update an existing batch>
-	*@param takes in a batch object and checks for valid field values
-	*@return ResponseEntity<Batch> <Returns the updated batch unless that batch was not found, then
-	*		 it will return the attempted batch, and an http status code of OK or NOT_FOUND>
-	*@author <John Beineke><1806-jun18-java-usf><Wezley Singleton>
+	*	This method Takes a Batch object from a request body, and updates it in a database.
+	*@param  a Batch is taken in as the request body
+	*@return The updated Batch object as it exist in the database, and a corresponding Http Status Code in a ResponseEntity
+	*@author John Beineke, Batch: 1806-jun18-java-usf, Trainer: Wezley Singleton
 	*/
 	@PutMapping(produces=MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Batch> updateBatch(@Valid @RequestBody Batch batch){
@@ -153,12 +159,5 @@ public class BatchController {
 		
 		return new ResponseEntity<BatchErrorResponse>(error, HttpStatus.NOT_FOUND);
 	}
-	
-	
-	
-	
-	
-	
-	
 
 }
