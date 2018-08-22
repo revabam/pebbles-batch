@@ -182,12 +182,5 @@ public class Batch implements Serializable{
 		return "Batch [id=" + id + ", name=" + name + ", startDate=" + startDate + ", endDate=" + endDate
 				+ ", trainer_id=" + trainer_id + ", calendarCurriculum_id=" + calendarCurriculum_id + "]";
 	}
-	
-	
-	
-	
-	
-	
-	
 
 }

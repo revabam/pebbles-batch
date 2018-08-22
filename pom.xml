@@ -54,7 +54,6 @@
 	</dependencyManagement>
 
 	<dependencies>
-
 		<!-- Eureka: Service registration and discovery -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
@@ -78,11 +77,11 @@
 		</dependency>
 
 		<!-- Dev Tools -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<scope>runtime</scope>
-		</dependency>
+		<!-- <dependency> -->
+		<!-- <groupId>org.springframework.boot</groupId> -->
+		<!-- <artifactId>spring-boot-devtools</artifactId> -->
+		<!-- <scope>runtime</scope> -->
+		<!-- </dependency> -->
 
 		<!-- H2 Database -->
 		<dependency>
@@ -140,7 +139,7 @@
 			<artifactId>springfox-swagger-ui</artifactId>
 			<version>2.7.0</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.apache.maven</groupId>
 			<artifactId>maven-model</artifactId>

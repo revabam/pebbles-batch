@@ -10,6 +10,14 @@ import org.springframework.stereotype.Service;
 import com.revature.models.Batch;
 import com.revature.repository.BatchRepository;
 
+/**
+ * This is the service that calls repository methods from BatchRepository to implement Batch CRUD functionality.  
+ * It implements CRUD functionality for Batches.
+ * There is no functionality to delete records from the database.
+ * The methods in this class are called from the BatchController class methods. They call repository methods to carry out CRUD functionality.
+ * @author John Beineke, Batch: 1806-Jun18-Java-USF, Trainer: Wezley Singleton
+ */
+
 @Transactional 
 @Service 
 public class BatchService {
