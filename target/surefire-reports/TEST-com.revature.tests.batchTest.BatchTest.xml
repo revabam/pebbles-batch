@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.revature.tests.batchTest.BatchTest" time="2.533" tests="10" errors="0" skipped="1" failures="0">
+<testsuite name="com.revature.tests.batchTest.BatchTest" time="2.459" tests="8" errors="0" skipped="1" failures="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_172\jre\bin"/>
@@ -64,15 +64,13 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase name="canGetBatchId1" classname="com.revature.tests.batchTest.BatchTest" time="1.397"/>
-  <testcase name="canGetBatchId2" classname="com.revature.tests.batchTest.BatchTest" time="0.605"/>
-  <testcase name="canAddBatch" classname="com.revature.tests.batchTest.BatchTest" time="0.238"/>
-  <testcase name="canGetBatchById" classname="com.revature.tests.batchTest.BatchTest" time="0.034"/>
-  <testcase name="canGetAllBatches" classname="com.revature.tests.batchTest.BatchTest" time="0.082"/>
-  <testcase name="canGetBatchesByName" classname="com.revature.tests.batchTest.BatchTest" time="0.047"/>
-  <testcase name="canAddBatchAndCompareBody" classname="com.revature.tests.batchTest.BatchTest" time="0.045"/>
-  <testcase name="canGetBatchesByTrainerId2" classname="com.revature.tests.batchTest.BatchTest" time="0.043"/>
-  <testcase name="canUpdateBatch" classname="com.revature.tests.batchTest.BatchTest" time="0.042"/>
+  <testcase name="canGetBatchId1" classname="com.revature.tests.batchTest.BatchTest" time="1.93"/>
+  <testcase name="canAddBatch" classname="com.revature.tests.batchTest.BatchTest" time="0.295"/>
+  <testcase name="canGetAllBatches" classname="com.revature.tests.batchTest.BatchTest" time="0.074"/>
+  <testcase name="canGetBatchesByName" classname="com.revature.tests.batchTest.BatchTest" time="0.055"/>
+  <testcase name="canAddBatchAndCompareBody" classname="com.revature.tests.batchTest.BatchTest" time="0.034"/>
+  <testcase name="canGetBatchesByTrainerId2" classname="com.revature.tests.batchTest.BatchTest" time="0.03"/>
+  <testcase name="canUpdateBatch" classname="com.revature.tests.batchTest.BatchTest" time="0.041"/>
   <testcase name="run" classname="com.revature.tests.batchTest.BatchTest" time="0">
     <skipped/>
   </testcase>
