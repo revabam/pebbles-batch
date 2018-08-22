@@ -1,0 +1,7 @@
+com\revature\controllers\BatchController.class
+com\revature\exceptions\BatchNotFoundException.class
+com\revature\models\Batch.class
+com\revature\services\BatchService.class
+com\revature\models\BatchErrorResponse.class
+com\revature\repository\BatchRepository.class
+com\revature\Application.class
