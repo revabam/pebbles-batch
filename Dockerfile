@@ -1,4 +1,4 @@
 FROM java:8
-ADD ./batch-service.jar .
+ADD ./pebbles-batch.jar .
 EXPOSE 9997
-CMD java -jar -Xmx512M batch-service.jar
+CMD java -jar -Xmx512M pebbles-batch.jar
