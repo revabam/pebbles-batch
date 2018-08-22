@@ -31,27 +31,10 @@ public class BatchTest extends TestDriver {
 	}
 
 	@Test
-	public void canGetBatchById() {
-
-		Batch testBatch = new Batch(1, "1806-June18-USF-Java4", new Date(1537224472690l), new Date(1545090592690l), 1,
-				1);
-		Batch batch = RestAssured.get(url + "/1").body().as(Batch.class);
-
-		assertEquals(testBatch, batch);
-	}
-
-	@Test
 	public void canGetBatchId1() {
 
-		int batchId = RestAssured.get(url + "/1").as(Batch.class).getId();
-
-		assertEquals(1, batchId);
-	}
-
-	@Test
-	public void canGetBatchId2() {
-
-		RestAssured.get(url + "/2").then().assertThat().body("id", equalTo(2));
+		RestAssured.get(url + "/1").then().assertThat().body("id", equalTo(1));
+		RestAssured.get(url + "/1").then().assertThat().body("name", equalTo("1806-June18-USF-Java4"));
 	}
 
 	@Test
