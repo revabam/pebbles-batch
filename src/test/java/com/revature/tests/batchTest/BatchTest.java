@@ -5,6 +5,8 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.Date;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,6 +23,8 @@ import io.restassured.RestAssured;
 @SpringBootTest(classes = TestDriver.class, properties = "/pebbles-batch/src/test/resources/application.properties", webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @ContextConfiguration(classes = Application.class)
 public class BatchTest extends TestDriver {
+
+	private static final Logger logger = LogManager.getLogger(BatchTest.class);
 
 	static String url = "http://localhost:9997";
 
@@ -57,7 +61,7 @@ public class BatchTest extends TestDriver {
 	@Test
 	public void canAddBatch() {
 
-		System.out.println("In RestAssuredBatchServiceTests.java");
+		logger.info("In RestAssuredBatchServiceTests.java");
 
 		Batch newBatch = new Batch(10, "1806-June12-USF-Pega", new Date(1637224472690l), new Date(1937224472690l), 2,
 				2);
@@ -69,7 +73,7 @@ public class BatchTest extends TestDriver {
 
 	@Test
 	public void canAddBatchAndCompareBody() {
-		System.out.println("In RestAssuredBatchServiceTests.java");
+		logger.info("In RestAssuredBatchServiceTests.java");
 
 		Batch newBatch = new Batch(6, "1806-June12-USF-Pega", new Date(1637224472690l), new Date(1937224472690l), 2, 2);
 
