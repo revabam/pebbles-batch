@@ -38,6 +38,7 @@ import com.revature.services.BatchService;
 
 @CrossOrigin
 @RestController
+@RequestMapping("/batches")
 public class BatchController {
 
 	@Autowired

@@ -26,7 +26,7 @@ public class BatchTest extends TestDriver {
 
 	private static final Logger logger = LogManager.getLogger(BatchTest.class);
 
-	static String url = "http://localhost:9997";
+	static String url = "http://localhost:9997/batches";
 
 	@Test
 	public void canGetAllBatches() {
