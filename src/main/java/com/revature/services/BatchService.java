@@ -32,7 +32,7 @@ public class BatchService {
 	/**
 	 * This methods returns all batches in the database
 	 * 
-	 * @return List<Batch> 
+	 * @return List<Batch>
 	 */
 	public List<Batch> findAll() {
 		return batchRepository.findAll();
@@ -50,17 +50,19 @@ public class BatchService {
 	}
 
 	/**
-	 * This method returns a list of batches from the database based on the given batch name 
+	 * This method returns a list of batches from the database based on the given
+	 * batch name
 	 * 
 	 * @param String name
-	 * @return List<Batch> 
+	 * @return List<Batch>
 	 */
 	public List<Batch> findBatchByName(String name) {
 		return batchRepository.findBatchesByName(name);
 	}
 
 	/**
-	 * This method returns a list of batches from the database that correspond with the given trainer id
+	 * This method returns a list of batches from the database that correspond with
+	 * the given trainer id
 	 * 
 	 * @param int trainerId
 	 * @return List<batch>
@@ -85,14 +87,14 @@ public class BatchService {
 	 * 
 	 * @param Batch batch
 	 * @return Returns the updated Batch object, if no object exists in the database returns null
+	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey        
 	 */
-	public Batch updateBatch(Batch batch) {
-
-		if (batch == null) {
-			return null;
-		} else {
-			return batchRepository.save(batch);
-		}
+	public Batch updateBatch(Batch updateBatch) {
+		Batch batch = batchRepository.findBatchById(updateBatch.getId());
+		if (batch != null) {
+			return batchRepository.save(updateBatch);
+		} 
+		return null;
 	}
 
 }

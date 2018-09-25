@@ -44,8 +44,6 @@ public class BatchController {
 	@Autowired
 	BatchService batchService;
 
-	private static final Logger logger = LogManager.getLogger(BatchController.class);
-
 	/**
 	 * This method Returns all Batches in the database
 	 * 
@@ -56,9 +54,6 @@ public class BatchController {
 	 */
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Batch>> findAll() {
-
-		logger.info("[DEBUG] - In BatchController.findAll()");
-
 		List<Batch> allBatches = batchService.findAll();
 		return new ResponseEntity<>(allBatches, HttpStatus.OK);
 	}
@@ -75,7 +70,6 @@ public class BatchController {
 	@GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Batch> findBatchById(@PathVariable Integer id) {
 
-		logger.info("[DEBUG] - In BatchController.findBatchById");
 		Batch batch = batchService.findBatchById(id);
 
 		if (batch == null) {
@@ -98,7 +92,6 @@ public class BatchController {
 	@GetMapping(value = "/name/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Batch>> findBatchesByName(@PathVariable String name) {
 
-		logger.info("[DEBUG] - In BatchController.findBatchByName");
 
 		List<Batch> batches = batchService.findBatchByName(name);
 
@@ -122,7 +115,6 @@ public class BatchController {
 	@GetMapping(value = "/trainer/{trainerId}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Batch>> findBatchesByTrainerId(@PathVariable Integer trainerId) {
 
-		logger.info("[DEBUG] - In BatchController.findBatchByTrainerId");
 		List<Batch> batches = batchService.findBatchesByTrainerId(trainerId);
 
 		if (batches == null) {
@@ -145,7 +137,6 @@ public class BatchController {
 	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Batch> addBatch(@Valid @RequestBody Batch batch) {
 
-		logger.info("[DEBUG] - In BatchController.addBatch");
 		Batch newBatch = batchService.addBatch(batch);
 		return new ResponseEntity<>(newBatch, HttpStatus.CREATED);
 	}
@@ -163,7 +154,6 @@ public class BatchController {
 	@PutMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Batch> updateBatch(@Valid @RequestBody Batch batch) {
 
-		logger.info("[DEBUG] - In BatchController.updateBatch");
 		Batch updatedBatch = batchService.updateBatch(batch);
 
 		if (updatedBatch == null) {
