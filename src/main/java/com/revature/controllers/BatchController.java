@@ -20,9 +20,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.revature.errorResponse.BatchErrorResponse;
 import com.revature.exceptions.BatchNotFoundException;
 import com.revature.models.Batch;
-import com.revature.models.BatchErrorResponse;
 import com.revature.services.BatchService;
 
 /**

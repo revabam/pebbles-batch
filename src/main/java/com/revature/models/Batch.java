@@ -121,6 +121,8 @@ public class Batch implements Serializable {
 	public void setCalendarCurriculumId(int calendarCurriculumId) {
 		this.calendarCurriculumId = calendarCurriculumId;
 	}
+	
+	
 
 	@Override
 	public int hashCode() {
