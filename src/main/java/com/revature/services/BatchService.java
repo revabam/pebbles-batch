@@ -29,35 +29,27 @@ public class BatchService {
 	@Autowired
 	BatchRepository batchRepository;
 
-	private static final Logger logger = LogManager.getLogger(BatchService.class);
-
 	public List<Batch> findAll() {
-		logger.info("[DEBUG] - In BatchService.findAll()");
 		return batchRepository.findAll();
 	}
 
 	public Batch findBatchById(Integer id) {
-		logger.info("[DEBUG] - In BatchService.findBatchById()");
 		return batchRepository.findBatchById(id);
 	}
 
 	public List<Batch> findBatchByName(String name) {
-		logger.info("[DEBUG] - In BatchService.findBatchByName()");
 		return batchRepository.findBatchesByName(name);
 	}
 
 	public List<Batch> findBatchesByTrainerId(Integer trainerId) {
-		logger.info("[DEBUG] - In BatchService.findBatchByTrainerId()");
 		return batchRepository.findBatchesByTrainerId(trainerId);
 	}
 
 	public Batch addBatch(Batch batch) {
-		logger.info("[DEBUG] - In BatchService.addBatch()");
 		return batchRepository.save(batch);
 	}
 
 	public Batch updateBatch(Batch batch) {
-		logger.info("[DEBUG] - In BatchService.updateBatch()");
 
 		if (batch == null) {
 			return null;
