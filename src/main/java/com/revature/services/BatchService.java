@@ -33,6 +33,7 @@ public class BatchService {
 	 * This methods returns all batches in the database
 	 * 
 	 * @return List<Batch>
+	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey  
 	 */
 	public List<Batch> findAll() {
 		return batchRepository.findAll();
@@ -55,6 +56,7 @@ public class BatchService {
 	 * 
 	 * @param String name
 	 * @return List<Batch>
+	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey  
 	 */
 	public List<Batch> findBatchByName(String name) {
 		return batchRepository.findBatchesByName(name);
@@ -77,6 +79,7 @@ public class BatchService {
 	 * 
 	 * @param Batch batch
 	 * @return Returns the persisted batch object
+	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey  
 	 */
 	public Batch addBatch(Batch batch) {
 		return batchRepository.save(batch);

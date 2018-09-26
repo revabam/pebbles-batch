@@ -25,7 +25,6 @@ public interface BatchRepository extends JpaRepository<Batch, Integer>{
 	 
 	 List<Batch> findBatchesByName(String name);
 	 
-//	 @Query("from Batch b WHERE b.trainer_id = :trainer_id")
 	 List<Batch> findBatchesByTrainerId(Integer trainerId);
 	 	 
 	 }
