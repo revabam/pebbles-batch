@@ -48,6 +48,7 @@ public class BatchController {
 	 * @param no parameters are taken
 	 * @return Returns a list of all Batches in the database and an http status code
 	 * @author John Beineke, Batch: 1806-jun18-java-usf, Trainer: Wezley Singleton
+	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey  
 	 */
 	@GetMapping
 	public ResponseEntity<List<Batch>> findAll() {
@@ -62,9 +63,10 @@ public class BatchController {
 	 * @return Returns a response entity containing a Batch that corresponds with
 	 *         the id parameter and an http status code
 	 * @author John Beineke, Batch: 1806-jun18-java-usf, Trainer: Wezley Singleton
+	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey  
 	 */
-	@GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Batch> findBatchById(@PathVariable Integer id) {
+	@GetMapping("/{id}")
+	public ResponseEntity<Batch> findBatchById(@PathVariable int id) {
 		Batch batch = batchService.findBatchById(id);
 		if (batch == null) {
 			return new ResponseEntity<>(batch, HttpStatus.NOT_FOUND);
@@ -81,8 +83,9 @@ public class BatchController {
 	 * @return Returns a response entity containing a Batch that corresponds with
 	 *         the name parameter and an http status code
 	 * @author John Beineke, Batch: 1806-jun18-java-usf, Trainer: Wezley Singleton
+	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey  
 	 */
-	@GetMapping(value = "/name/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping("/name/{name}")
 	public ResponseEntity<List<Batch>> findBatchesByName(@PathVariable String name) {
 		List<Batch> batches = batchService.findBatchByName(name);
 		if (batches == null) {
@@ -100,9 +103,10 @@ public class BatchController {
 	 * @return Returns a response entity containing a list of the batches that
 	 *         correspond with the Trainer id parameter and an http status code
 	 * @author John Beineke, Batch: 1806-jun18-java-usf, Trainer: Wezley Singleton
+	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey  
 	 */
-	@GetMapping(value = "/trainer/{trainerId}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<Batch>> findBatchesByTrainerId(@PathVariable Integer trainerId) {
+	@GetMapping("/trainer/{trainerId}")
+	public ResponseEntity<List<Batch>> findBatchesByTrainerId(@PathVariable int trainerId) {
 		List<Batch> batches = batchService.findBatchesByTrainerId(trainerId);
 		if (batches == null) {
 			return new ResponseEntity<>(batches, HttpStatus.NOT_FOUND);
@@ -119,8 +123,9 @@ public class BatchController {
 	 * @return The Batch that was added to the database with its generated id, and a
 	 *         corresponding http status code
 	 * @author John Beineke, Batch: 1806-jun18-java-usf, Trainer: Wezley Singleton
+	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey  
 	 */
-	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping
 	public ResponseEntity<Batch> addBatch(@Valid @RequestBody Batch batch) {
 		Batch newBatch = batchService.addBatch(batch);
 		return new ResponseEntity<>(newBatch, HttpStatus.CREATED);
@@ -134,8 +139,9 @@ public class BatchController {
 	 * @return The updated Batch object as it exist in the database, and a
 	 *         corresponding Http Status Code in a ResponseEntity
 	 * @author John Beineke, Batch: 1806-jun18-java-usf, Trainer: Wezley Singleton
+	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey  
 	 */
-	@PutMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PutMapping
 	public ResponseEntity<Batch> updateBatch(@Valid @RequestBody Batch batch) {
 		Batch updatedBatch = batchService.updateBatch(batch);
 		if (updatedBatch == null) {

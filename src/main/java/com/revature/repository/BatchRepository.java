@@ -21,10 +21,10 @@ public interface BatchRepository extends JpaRepository<Batch, Integer>{
 	
 	// Also using CRUD repository findAll() and  save() methods
 	
-	 Batch findBatchById(Integer id);
+	 Batch findBatchById(int id);
 	 
 	 List<Batch> findBatchesByName(String name);
 	 
-	 List<Batch> findBatchesByTrainerId(Integer trainerId);
+	 List<Batch> findBatchesByTrainerId(int trainerId);
 	 	 
 	 }
