@@ -4,8 +4,8 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +28,10 @@ public class BatchService {
 
 	@Autowired
 	BatchRepository batchRepository;
+
+	public BatchService(String string, int i) {
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * This methods returns all batches in the database
@@ -99,5 +103,6 @@ public class BatchService {
 		} 
 		return null;
 	}
+
 
 }
