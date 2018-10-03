@@ -2,17 +2,12 @@ package com.revature.tests.batchTest;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertEquals;
-
 import java.util.Date;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
 import com.revature.Application;
 import com.revature.models.Batch;
 import com.revature.tests.TestDriver;
@@ -24,9 +19,8 @@ import io.restassured.RestAssured;
 @ContextConfiguration(classes = Application.class)
 public class BatchTest extends TestDriver {
 
-	private static final Logger logger = LogManager.getLogger(BatchTest.class);
 
-	static String url = "http://localhost:9997";
+	static String url = "http://localhost:9997/batches";
 
 	@Test
 	public void canGetAllBatches() {
@@ -61,8 +55,6 @@ public class BatchTest extends TestDriver {
 	@Test
 	public void canAddBatch() {
 
-		logger.info("In RestAssuredBatchServiceTests.java");
-
 		Batch newBatch = new Batch(10, "1806-June12-USF-Pega", new Date(1637224472690l), new Date(1937224472690l), 2,
 				2);
 
@@ -73,7 +65,6 @@ public class BatchTest extends TestDriver {
 
 	@Test
 	public void canAddBatchAndCompareBody() {
-		logger.info("In RestAssuredBatchServiceTests.java");
 
 		Batch newBatch = new Batch(6, "1806-June12-USF-Pega", new Date(1637224472690l), new Date(1937224472690l), 2, 2);
 

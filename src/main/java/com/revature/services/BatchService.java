@@ -1,11 +1,7 @@
 package com.revature.services;
 
 import java.util.List;
-
 import javax.transaction.Transactional;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,41 +25,75 @@ public class BatchService {
 	@Autowired
 	BatchRepository batchRepository;
 
-	private static final Logger logger = LogManager.getLogger(BatchService.class);
-
+	/**
+	 * This methods returns all batches in the database
+	 * 
+	 * @return List<Batch>
+	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey  
+	 */
 	public List<Batch> findAll() {
-		logger.info("[DEBUG] - In BatchService.findAll()");
 		return batchRepository.findAll();
 	}
 
-	public Batch findBatchById(Integer id) {
-		logger.info("[DEBUG] - In BatchService.findBatchById()");
+	/**
+	 * This method returns the batch that corresponds with the given id parameter
+	 * 
+	 * @param int id
+	 * @return Batch
+	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
+	 */
+	public Batch findBatchById(int id) {
 		return batchRepository.findBatchById(id);
 	}
 
+	/**
+	 * This method returns a list of batches from the database based on the given
+	 * batch name
+	 * 
+	 * @param String name
+	 * @return List<Batch>
+	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey  
+	 */
 	public List<Batch> findBatchByName(String name) {
-		logger.info("[DEBUG] - In BatchService.findBatchByName()");
 		return batchRepository.findBatchesByName(name);
 	}
 
-	public List<Batch> findBatchesByTrainerId(Integer trainerId) {
-		logger.info("[DEBUG] - In BatchService.findBatchByTrainerId()");
+	/**
+	 * This method returns a list of batches from the database that correspond with
+	 * the given trainer id
+	 * 
+	 * @param int trainerId
+	 * @return List<batch>
+	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey
+	 */
+	public List<Batch> findBatchesByTrainerId(int trainerId) {
 		return batchRepository.findBatchesByTrainerId(trainerId);
 	}
 
+	/**
+	 * This method takes in a Batch object and persists it into the database
+	 * 
+	 * @param Batch batch
+	 * @return Returns the persisted batch object
+	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey  
+	 */
 	public Batch addBatch(Batch batch) {
-		logger.info("[DEBUG] - In BatchService.addBatch()");
 		return batchRepository.save(batch);
 	}
 
-	public Batch updateBatch(Batch batch) {
-		logger.info("[DEBUG] - In BatchService.updateBatch()");
-
-		if (batch == null) {
-			return null;
-		} else {
-			return batchRepository.save(batch);
-		}
+	/**
+	 * This method takes in a Batch object and updates that object in the database
+	 * 
+	 * @param Batch batch
+	 * @return Returns the updated Batch object, if no object exists in the database returns null
+	 * @author Alicia Douglas, Batch: 1806-spark, Trainer: Steven Kelsey        
+	 */
+	public Batch updateBatch(Batch updateBatch) {
+		Batch batch = batchRepository.findBatchById(updateBatch.getId());
+		if (batch != null) {
+			return batchRepository.save(updateBatch);
+		} 
+		return null;
 	}
 
 }

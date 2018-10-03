@@ -41,6 +41,7 @@ local.properties
 .project 
 Servers/
 RemoteSystemsTempFiles/
+target/
 
 # External tool builders 
 .externalToolBuilders/ 
