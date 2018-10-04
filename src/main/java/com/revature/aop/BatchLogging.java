@@ -22,14 +22,12 @@ private Logger logger = Logger.getLogger(this.getClass());
 	// This executes after the methods in the service class
 	@After("execution( * com.revature.services.*.*(..))")
 	public void logExecutionTime(JoinPoint joinPoint) throws Throwable {
-		System.out.println("Current Directory = " + System.getProperty("user.dir"));
-		System.out.println("NOW LOGGING");
 		logger.info("Used  services " + joinPoint);
 		logger.error("Error!");
 		logger.debug("Now Debugging...");
 	}
 	
-	//This executed before the methods in the curriculum controller
+	//This executed before the methods in the batch controller
 		@Before("execution( * com.revature.controllers.BatchController.*(..))")
 		public void logCurriculum(JoinPoint joinPoint) throws Throwable{
 			logger.info("Batch endpoints hit" + joinPoint);
