@@ -16,6 +16,11 @@ import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+/**
+ * This is a class that represents a Java bean for a BATCH table.
+ * It provides getters and setters for all properties,
+ * and overrides hashCode(), equals(Object obj), and toString().  
+ */
 @Entity
 @Component
 @Table(name = "BATCH")
@@ -121,8 +126,6 @@ public class Batch implements Serializable {
 	public void setCalendarCurriculumId(int calendarCurriculumId) {
 		this.calendarCurriculumId = calendarCurriculumId;
 	}
-	
-	
 
 	@Override
 	public int hashCode() {
