@@ -6,7 +6,6 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -73,7 +72,6 @@ public class BatchController {
 		} else {
 			return new ResponseEntity<>(batch, HttpStatus.OK);
 		}
-
 	}
 
 	/**
@@ -151,6 +149,15 @@ public class BatchController {
 		}
 	}
 
+	/**
+	 * This method takes any runtime exception and returns an error message 
+	 * with a corresponding HttpStatus code
+	 * 
+	 * @param A runtime exception parameter is taken in
+	 * @return Returns a ResponseEntity that contains an error message and a 
+	 * 		   corresponding Http Status Code
+	 * @author John Beineke, Batch: 1806-jun18-java-usf, Trainer: Wezley Singleton
+	 */
 	@ExceptionHandler
 	public ResponseEntity<BatchErrorResponse> handleException(BatchNotFoundException e) {
 		BatchErrorResponse error = new BatchErrorResponse();
@@ -159,5 +166,4 @@ public class BatchController {
 		error.setTimestamp(System.currentTimeMillis());
 		return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
 	}
-
 }

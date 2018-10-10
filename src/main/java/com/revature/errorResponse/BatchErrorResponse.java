@@ -1,5 +1,9 @@
 package com.revature.errorResponse;
 
+/**
+ * This is a class that represents a Java Object for an error 
+ * response.  It provides getters and setters for all properties.
+ */
 public class BatchErrorResponse {
 	
 	private int status;
@@ -38,5 +42,4 @@ public class BatchErrorResponse {
 	public void setTimestamp(long timestamp) {
 		this.timestamp = timestamp;
 	}
-
 }
